@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxTarefas = new System.Windows.Forms.ListBox();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             this.btnInserirTarefa.TabIndex = 0;
             this.btnInserirTarefa.Text = "Inserir";
             this.btnInserirTarefa.UseVisualStyleBackColor = true;
-            this.btnInserirTarefa.Click += new System.EventHandler(this.button1_Click);
+            this.btnInserirTarefa.Click += new System.EventHandler(this.btnInserirTarefa_Click);
             // 
             // btnEditarTarefas
             // 
@@ -59,6 +60,7 @@
             this.btnEditarTarefas.TabIndex = 1;
             this.btnEditarTarefas.Text = "Editar";
             this.btnEditarTarefas.UseVisualStyleBackColor = true;
+            this.btnEditarTarefas.Click += new System.EventHandler(this.btnEditarTarefas_Click);
             // 
             // btnExcluirTarefas
             // 
@@ -68,6 +70,7 @@
             this.btnExcluirTarefas.TabIndex = 2;
             this.btnExcluirTarefas.Text = "Excluir";
             this.btnExcluirTarefas.UseVisualStyleBackColor = true;
+            this.btnExcluirTarefas.Click += new System.EventHandler(this.btnExcluirTarefas_Click);
             // 
             // btnInserirItens
             // 
@@ -77,6 +80,7 @@
             this.btnInserirItens.TabIndex = 3;
             this.btnInserirItens.Text = "Inserir";
             this.btnInserirItens.UseVisualStyleBackColor = true;
+            this.btnInserirItens.Click += new System.EventHandler(this.btnInserirItens_Click);
             // 
             // btnConcluirItens
             // 
@@ -86,6 +90,7 @@
             this.btnConcluirItens.TabIndex = 4;
             this.btnConcluirItens.Text = "Concluir itens";
             this.btnConcluirItens.UseVisualStyleBackColor = true;
+            this.btnConcluirItens.Click += new System.EventHandler(this.btnConcluirItens_Click);
             // 
             // panel1
             // 
@@ -135,12 +140,23 @@
             this.listBoxTarefas.Size = new System.Drawing.Size(634, 319);
             this.listBoxTarefas.TabIndex = 9;
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(449, 438);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(187, 23);
+            this.btnVoltar.TabIndex = 3;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // TarefaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(642, 436);
+            this.ClientSize = new System.Drawing.Size(640, 464);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.listBoxTarefas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -168,5 +184,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBoxTarefas;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }
