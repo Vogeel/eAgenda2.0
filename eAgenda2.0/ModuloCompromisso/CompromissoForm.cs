@@ -51,7 +51,16 @@ namespace eAgenda2._0
         private void btnEditarCompromisso_Click(object sender, EventArgs e)
         {
 
-            Compromisso compromissoSelecionado = (Compromisso)listBoxCompromissosFuturos.SelectedItem;
+            Compromisso compromissoSelecionado = null;
+
+            if (listBoxCompromissosPassados.SelectedIndex > -1)
+            {
+                compromissoSelecionado = (Compromisso)listBoxCompromissosPassados.SelectedItem;
+            }
+            else
+            {
+                compromissoSelecionado = (Compromisso)listBoxCompromissosFuturos.SelectedItem;
+            }
 
             Compromisso novoCompromisso = new();
 
@@ -65,6 +74,8 @@ namespace eAgenda2._0
             novoCompromisso.DataCompromisso = compromissoSelecionado.DataCompromisso;
             novoCompromisso.HoraInicio = compromissoSelecionado.HoraInicio;
             novoCompromisso.HoraFim = compromissoSelecionado.HoraFim;
+
+            if(compromissoSelecionado.Contato != null)
             novoCompromisso.Contato = compromissoSelecionado.Contato;
 
             CadastroComprimossosForm telaCadCompromisso = new(novoCompromisso, _repositorioContato!);
