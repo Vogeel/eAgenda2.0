@@ -3,14 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgenda2.0", "eAgenda2.0\eAgenda2.0.csproj", "{16BD8329-4852-4939-84CC-1E6C56C45413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telas.WinApp", "eAgenda2.0\Telas.WinApp.csproj", "{16BD8329-4852-4939-84CC-1E6C56C45413}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Apresentacao", "1-Apresentacao", "{C7BB2D70-FA73-4FE7-AF69-84A97C00D1E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Dominio", "2-Dominio", "{EED2C74B-75E5-4272-9807-A931BABC9F5C}"
-	ProjectSection(SolutionItems) = preProject
-		Repositorio.cs = Repositorio.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{FAF6570D-36DD-4DE2-BCD2-369588ED5E71}"
 EndProject

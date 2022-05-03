@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxContato = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TBAssuntoCompromisso = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,21 +36,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.TBLocarCompromisso = new System.Windows.Forms.TextBox();
-            this.TBDataCompromisso = new System.Windows.Forms.TextBox();
-            this.TBDataInicioCompromisso = new System.Windows.Forms.TextBox();
-            this.TBDataFimCompromisso = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.maskedTextBoxData = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxHoraInicio = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxHoraFim = new System.Windows.Forms.MaskedTextBox();
+            this.btnInserir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxContato
             // 
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(100, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 23);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "(opcional)";
+            this.comboBoxContato.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.comboBoxContato.FormattingEnabled = true;
+            this.comboBoxContato.Items.AddRange(new object[] {
+            "(Nenhum Contato)"});
+            this.comboBoxContato.Location = new System.Drawing.Point(100, 116);
+            this.comboBoxContato.Name = "comboBoxContato";
+            this.comboBoxContato.Size = new System.Drawing.Size(120, 23);
+            this.comboBoxContato.TabIndex = 0;
             // 
             // label1
             // 
@@ -111,31 +114,6 @@
             this.TBLocarCompromisso.Size = new System.Drawing.Size(100, 23);
             this.TBLocarCompromisso.TabIndex = 11;
             // 
-            // TBDataCompromisso
-            // 
-            this.TBDataCompromisso.Location = new System.Drawing.Point(100, 88);
-            this.TBDataCompromisso.Name = "TBDataCompromisso";
-            this.TBDataCompromisso.Size = new System.Drawing.Size(100, 23);
-            this.TBDataCompromisso.TabIndex = 12;
-            // 
-            // TBDataInicioCompromisso
-            // 
-            this.TBDataInicioCompromisso.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.TBDataInicioCompromisso.Location = new System.Drawing.Point(100, 142);
-            this.TBDataInicioCompromisso.Name = "TBDataInicioCompromisso";
-            this.TBDataInicioCompromisso.Size = new System.Drawing.Size(100, 23);
-            this.TBDataInicioCompromisso.TabIndex = 13;
-            this.TBDataInicioCompromisso.Text = "(opcional)";
-            // 
-            // TBDataFimCompromisso
-            // 
-            this.TBDataFimCompromisso.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.TBDataFimCompromisso.Location = new System.Drawing.Point(100, 171);
-            this.TBDataFimCompromisso.Name = "TBDataFimCompromisso";
-            this.TBDataFimCompromisso.Size = new System.Drawing.Size(100, 23);
-            this.TBDataFimCompromisso.TabIndex = 15;
-            this.TBDataFimCompromisso.Text = "(opcional)";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -145,16 +123,66 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Horario Fim:";
             // 
+            // maskedTextBoxData
+            // 
+            this.maskedTextBoxData.Location = new System.Drawing.Point(100, 90);
+            this.maskedTextBoxData.Mask = "00/00/0000";
+            this.maskedTextBoxData.Name = "maskedTextBoxData";
+            this.maskedTextBoxData.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxData.TabIndex = 16;
+            this.maskedTextBoxData.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBoxHoraInicio
+            // 
+            this.maskedTextBoxHoraInicio.Location = new System.Drawing.Point(100, 145);
+            this.maskedTextBoxHoraInicio.Mask = "00:00";
+            this.maskedTextBoxHoraInicio.Name = "maskedTextBoxHoraInicio";
+            this.maskedTextBoxHoraInicio.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxHoraInicio.TabIndex = 17;
+            this.maskedTextBoxHoraInicio.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBoxHoraFim
+            // 
+            this.maskedTextBoxHoraFim.Location = new System.Drawing.Point(100, 174);
+            this.maskedTextBoxHoraFim.Mask = "00:00";
+            this.maskedTextBoxHoraFim.Name = "maskedTextBoxHoraFim";
+            this.maskedTextBoxHoraFim.Size = new System.Drawing.Size(100, 23);
+            this.maskedTextBoxHoraFim.TabIndex = 19;
+            this.maskedTextBoxHoraFim.ValidatingType = typeof(System.DateTime);
+            // 
+            // btnInserir
+            // 
+            this.btnInserir.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnInserir.Location = new System.Drawing.Point(56, 203);
+            this.btnInserir.Name = "btnInserir";
+            this.btnInserir.Size = new System.Drawing.Size(75, 23);
+            this.btnInserir.TabIndex = 20;
+            this.btnInserir.Text = "Inserir";
+            this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(163, 203);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // CadastroComprimossosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(307, 212);
-            this.Controls.Add(this.TBDataFimCompromisso);
+            this.ClientSize = new System.Drawing.Size(262, 238);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnInserir);
+            this.Controls.Add(this.maskedTextBoxHoraFim);
+            this.Controls.Add(this.maskedTextBoxHoraInicio);
+            this.Controls.Add(this.maskedTextBoxData);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.TBDataInicioCompromisso);
-            this.Controls.Add(this.TBDataCompromisso);
             this.Controls.Add(this.TBLocarCompromisso);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -162,7 +190,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TBAssuntoCompromisso);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxContato);
             this.Name = "CadastroComprimossosForm";
             this.Text = "CadastroComprimossosForm";
             this.ResumeLayout(false);
@@ -172,7 +200,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxContato;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TBAssuntoCompromisso;
         private System.Windows.Forms.Label label2;
@@ -180,9 +208,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TBLocarCompromisso;
-        private System.Windows.Forms.TextBox TBDataCompromisso;
-        private System.Windows.Forms.TextBox TBDataInicioCompromisso;
-        private System.Windows.Forms.TextBox TBDataFimCompromisso;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxData;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxHoraInicio;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxHoraFim;
+        private System.Windows.Forms.Button btnInserir;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

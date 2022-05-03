@@ -38,6 +38,8 @@
             this.textBoxEmailcntt = new System.Windows.Forms.TextBox();
             this.textBoxEmpresacntt = new System.Windows.Forms.TextBox();
             this.textBoxCargocntt = new System.Windows.Forms.TextBox();
+            this.btnInserirCntt = new System.Windows.Forms.Button();
+            this.btnCancelarCntt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -108,28 +110,50 @@
             // 
             // textBoxEmpresacntt
             // 
-            this.textBoxEmpresacntt.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxEmpresacntt.ForeColor = System.Drawing.SystemColors.MenuText;
             this.textBoxEmpresacntt.Location = new System.Drawing.Point(69, 73);
             this.textBoxEmpresacntt.Name = "textBoxEmpresacntt";
             this.textBoxEmpresacntt.Size = new System.Drawing.Size(100, 23);
             this.textBoxEmpresacntt.TabIndex = 8;
-            this.textBoxEmpresacntt.Text = "(opcional)";
+            this.textBoxEmpresacntt.Text = "\r\n";
             // 
             // textBoxCargocntt
             // 
-            this.textBoxCargocntt.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxCargocntt.ForeColor = System.Drawing.SystemColors.MenuText;
             this.textBoxCargocntt.Location = new System.Drawing.Point(69, 97);
             this.textBoxCargocntt.Name = "textBoxCargocntt";
             this.textBoxCargocntt.Size = new System.Drawing.Size(100, 23);
             this.textBoxCargocntt.TabIndex = 9;
-            this.textBoxCargocntt.Text = "(opcional)";
+            // 
+            // btnInserirCntt
+            // 
+            this.btnInserirCntt.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnInserirCntt.Location = new System.Drawing.Point(8, 126);
+            this.btnInserirCntt.Name = "btnInserirCntt";
+            this.btnInserirCntt.Size = new System.Drawing.Size(75, 23);
+            this.btnInserirCntt.TabIndex = 10;
+            this.btnInserirCntt.Text = "Inserir";
+            this.btnInserirCntt.UseVisualStyleBackColor = true;
+            this.btnInserirCntt.Click += new System.EventHandler(this.btnInserirCntt_Click_1);
+            // 
+            // btnCancelarCntt
+            // 
+            this.btnCancelarCntt.Location = new System.Drawing.Point(89, 125);
+            this.btnCancelarCntt.Name = "btnCancelarCntt";
+            this.btnCancelarCntt.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarCntt.TabIndex = 11;
+            this.btnCancelarCntt.Text = "Cancelar";
+            this.btnCancelarCntt.UseVisualStyleBackColor = true;
+            this.btnCancelarCntt.Click += new System.EventHandler(this.btnCancelarCntt_Click);
             // 
             // CadastroContatosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(200, 137);
+            this.ClientSize = new System.Drawing.Size(200, 160);
+            this.Controls.Add(this.btnCancelarCntt);
+            this.Controls.Add(this.btnInserirCntt);
             this.Controls.Add(this.textBoxCargocntt);
             this.Controls.Add(this.textBoxEmpresacntt);
             this.Controls.Add(this.textBoxEmailcntt);
@@ -161,5 +185,7 @@
         private System.Windows.Forms.TextBox textBoxEmailcntt;
         private System.Windows.Forms.TextBox textBoxEmpresacntt;
         private System.Windows.Forms.TextBox textBoxCargocntt;
+        private System.Windows.Forms.Button btnInserirCntt;
+        private System.Windows.Forms.Button btnCancelarCntt;
     }
 }

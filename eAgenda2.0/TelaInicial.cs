@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eAgenda.Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,12 @@ namespace eAgenda2._0
     public partial class TelaInicial : Form
     {
 
-        ContatoForm? contatoForm;
-        TarefaForm? tarefaForm;
-        CompromissoForm? compromissoForm;
+        Repositorio<Contato> repositorioContato = new();
+        ContatoForm? telaContato;
+        Repositorio<Compromisso> repositorioCompromisso = new();
+        CompromissoForm? telaCompromisso;
+        Repositorio<Tarefa> repositorioTarefa = new();
+        TarefaForm? telaTarefa;
         public TelaInicial()
         {
             InitializeComponent();
@@ -26,19 +30,21 @@ namespace eAgenda2._0
 
         private void btnContatos_Click(object sender, EventArgs e)
         {
-            contatoForm = new ContatoForm(repositorioContato);
-            contatoForm.Show();
+            telaContato = new ContatoForm(repositorioContato);
+            telaContato.Show();
         }
 
         private void btnCompromisso_Click(object sender, EventArgs e)
         {
-
+            telaCompromisso = new CompromissoForm(repositorioCompromisso, repositorioContato);
+            telaCompromisso.Show();
         }
 
 
         private void btnTarefas_Click(object sender, EventArgs e)
         {
-
+            telaTarefa = new TarefaForm();
+            telaTarefa.Show();
         }
     }
 }
