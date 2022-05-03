@@ -39,11 +39,14 @@
             // comboBoxPrioridade
             // 
             this.comboBoxPrioridade.FormattingEnabled = true;
+            this.comboBoxPrioridade.Items.AddRange(new object[] {
+            "Alta",
+            "Media",
+            "Baixa"});
             this.comboBoxPrioridade.Location = new System.Drawing.Point(82, 11);
             this.comboBoxPrioridade.Name = "comboBoxPrioridade";
             this.comboBoxPrioridade.Size = new System.Drawing.Size(121, 23);
             this.comboBoxPrioridade.TabIndex = 0;
-
             // 
             // textBoxTituloTarefa
             // 
@@ -72,6 +75,7 @@
             // 
             // btnInserir
             // 
+            this.btnInserir.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnInserir.Location = new System.Drawing.Point(43, 69);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(75, 23);
@@ -82,6 +86,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(124, 69);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);

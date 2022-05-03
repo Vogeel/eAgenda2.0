@@ -14,7 +14,7 @@ namespace eAgenda2._0
     public partial class CadastroTarefaForm : Form
     {
         Tarefa? _tarefa;
-        Repositorio<Tarefa> _repositorioTarefa;
+
         public CadastroTarefaForm(Tarefa tarefa)
         {
             InitializeComponent();

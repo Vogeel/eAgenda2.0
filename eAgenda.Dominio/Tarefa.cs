@@ -77,6 +77,40 @@ namespace eAgenda.Dominio
             }
         }
 
- 
+        public void AtualizarConclusao(List<Item> itensConcluidos, List<Item> itensPendentes)
+        {
+            foreach (var item in itensConcluidos)
+            {
+                ConcluirItem(item);
+            }
+
+            foreach (var item in itensPendentes)
+            {
+                MarcarPendente(item);
+            }
+        }
+
+        public void ConcluirItem(Item item)
+        {
+            Item itemTarefa = itens.Find(x => x.Equals(item));
+
+            itemTarefa?.Concluir();
+
+            var percentual = CalcularPercentualConcluisao();
+
+            if (percentual == 100)
+            { 
+                  DataConclusao = DateTime.Now;
+                concluido = true;
+            }
+
+        }
+
+        public void MarcarPendente(Item item)
+        {
+            Item itemTarefa = itens.Find(x => x.Equals(item));
+
+            itemTarefa?.MarcarPendente();
+        }
     }
 }

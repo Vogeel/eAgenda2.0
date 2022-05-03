@@ -43,7 +43,7 @@ namespace eAgenda2._0
 
         private void btnTarefas_Click(object sender, EventArgs e)
         {
-            telaTarefa = new TarefaForm();
+            telaTarefa = new TarefaForm(repositorioTarefa);
             telaTarefa.Show();
         }
     }

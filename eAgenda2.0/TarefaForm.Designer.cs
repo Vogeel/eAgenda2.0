@@ -37,8 +37,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBoxTarefas = new System.Windows.Forms.ListBox();
+            this.listBoxTarefasPendentes = new System.Windows.Forms.ListBox();
             this.btnVoltar = new System.Windows.Forms.Button();
+            this.listBoxTarefasConcluidas = new System.Windows.Forms.ListBox();
+            this.Pendentes = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,18 +134,18 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Itens";
             // 
-            // listBoxTarefas
+            // listBoxTarefasPendentes
             // 
-            this.listBoxTarefas.FormattingEnabled = true;
-            this.listBoxTarefas.ItemHeight = 15;
-            this.listBoxTarefas.Location = new System.Drawing.Point(2, 113);
-            this.listBoxTarefas.Name = "listBoxTarefas";
-            this.listBoxTarefas.Size = new System.Drawing.Size(634, 319);
-            this.listBoxTarefas.TabIndex = 9;
+            this.listBoxTarefasPendentes.FormattingEnabled = true;
+            this.listBoxTarefasPendentes.ItemHeight = 15;
+            this.listBoxTarefasPendentes.Location = new System.Drawing.Point(2, 123);
+            this.listBoxTarefasPendentes.Name = "listBoxTarefasPendentes";
+            this.listBoxTarefasPendentes.Size = new System.Drawing.Size(634, 139);
+            this.listBoxTarefasPendentes.TabIndex = 9;
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(449, 438);
+            this.btnVoltar.Location = new System.Drawing.Point(449, 432);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(187, 23);
             this.btnVoltar.TabIndex = 3;
@@ -150,14 +153,44 @@
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // listBoxTarefasConcluidas
+            // 
+            this.listBoxTarefasConcluidas.FormattingEnabled = true;
+            this.listBoxTarefasConcluidas.ItemHeight = 15;
+            this.listBoxTarefasConcluidas.Location = new System.Drawing.Point(2, 268);
+            this.listBoxTarefasConcluidas.Name = "listBoxTarefasConcluidas";
+            this.listBoxTarefasConcluidas.Size = new System.Drawing.Size(634, 139);
+            this.listBoxTarefasConcluidas.TabIndex = 10;
+            // 
+            // Pendentes
+            // 
+            this.Pendentes.AutoSize = true;
+            this.Pendentes.Location = new System.Drawing.Point(527, 105);
+            this.Pendentes.Name = "Pendentes";
+            this.Pendentes.Size = new System.Drawing.Size(101, 15);
+            this.Pendentes.TabIndex = 11;
+            this.Pendentes.Text = "Tarefas Pendentes";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(527, 411);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Tarefas Concluídas";
+            // 
             // TarefaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(640, 464);
+            this.ClientSize = new System.Drawing.Size(640, 467);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Pendentes);
+            this.Controls.Add(this.listBoxTarefasConcluidas);
             this.Controls.Add(this.btnVoltar);
-            this.Controls.Add(this.listBoxTarefas);
+            this.Controls.Add(this.listBoxTarefasPendentes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConcluirItens);
@@ -183,7 +216,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBoxTarefas;
+        private System.Windows.Forms.ListBox listBoxTarefasPendentes;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.ListBox listBoxTarefasConcluidas;
+        private System.Windows.Forms.Label Pendentes;
+        private System.Windows.Forms.Label label3;
     }
 }
