@@ -142,6 +142,7 @@
             this.listBoxTarefasPendentes.Name = "listBoxTarefasPendentes";
             this.listBoxTarefasPendentes.Size = new System.Drawing.Size(634, 139);
             this.listBoxTarefasPendentes.TabIndex = 9;
+            this.listBoxTarefasPendentes.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefasPendentes_SelectedIndexChanged);
             // 
             // btnVoltar
             // 
@@ -161,6 +162,7 @@
             this.listBoxTarefasConcluidas.Name = "listBoxTarefasConcluidas";
             this.listBoxTarefasConcluidas.Size = new System.Drawing.Size(634, 139);
             this.listBoxTarefasConcluidas.TabIndex = 10;
+            this.listBoxTarefasConcluidas.SelectedIndexChanged += new System.EventHandler(this.listBoxTarefasConcluidas_SelectedIndexChanged);
             // 
             // Pendentes
             // 

@@ -21,7 +21,9 @@ namespace eAgenda.Dominio
             {
                 return $"ID: {id} Assunto: {Assunto} Local: {Local} Data: {DataCompromisso} Hora início: {HoraInicio} Hora fim: {HoraFim} Contato: {Contato}";
             }
-            return $"ID: {id} Assunto: {Assunto} Local: {Local} Data: {DataCompromisso} Hora início: {HoraInicio} Hora fim: {HoraFim}";
+           
+                return $"ID: {id} Assunto: {Assunto} Local: {Local} Data: {DataCompromisso} Hora início: {HoraInicio} Hora fim: {HoraFim}";
+                
         }
 
         public override string Validar()

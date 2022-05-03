@@ -26,6 +26,11 @@ namespace eAgenda2._0
 
             if (res == DialogResult.OK)
             {
+                Contato descriocaCntt = telaCadContato.Contato;
+                bool tituloNovo = VerificarExistentente(descriocaCntt);
+                if (!tituloNovo)
+                    return;
+
                 string status = _repositorioContato.Inserir(telaCadContato.Contato);
 
                 if (status.Trim() == "REGISTRO_VALIDO")
@@ -81,12 +86,19 @@ namespace eAgenda2._0
         {
             Contato contatoSelecionado = (Contato)listBoxContatos.SelectedItem;
 
+            if (contatoSelecionado.EstaEmCompromisso)
+            {
+                MessageBox.Show("O contato está presente em um compromisso, não é possível excluir", "Excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             bool temRegistro = VerificarSeTemRegistro(contatoSelecionado, "Excluir");
             if (!temRegistro)
                 return;
 
             DialogResult resultado = MessageBox.Show("Excluir contato?", "Excluir", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
+            
+            
             if(resultado == DialogResult.OK)
             {
                 _repositorioContato.Excluir(contatoSelecionado);
@@ -145,7 +157,31 @@ namespace eAgenda2._0
             else
                 return true;
         }
+        private bool VerificarExistentente(Contato temp)
+        {
+            List<Contato> todosContatos = _repositorioContato.SelecionarTodos();
 
-       
+            foreach (Contato contatoJaRegistrado in todosContatos)
+            {
+                if (contatoJaRegistrado.Nome == temp.Nome)
+                {
+                    MessageBox.Show("O Nome do contato já existe", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (contatoJaRegistrado.Email == temp.Email)
+                {
+                    MessageBox.Show("O Email do contato já existe", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                if (contatoJaRegistrado.Telefone == temp.Telefone)
+                {
+                    MessageBox.Show("O Telefone do contato já existe", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
     }
 }

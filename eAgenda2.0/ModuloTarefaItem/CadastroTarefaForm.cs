@@ -33,6 +33,7 @@ namespace eAgenda2._0
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+           
             _tarefa!.Titulo = textBoxTituloTarefa.Text;
             if (comboBoxPrioridade.SelectedItem == null)
             {

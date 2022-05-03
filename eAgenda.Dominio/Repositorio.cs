@@ -55,7 +55,16 @@ namespace eAgenda.Dominio
 
             return registrosFiltrados;
         }
+        public List<T> FiltrarCompromissos(Predicate<T> condicao, Predicate<T> condicao2)
+        {
+            List<T> registrosFiltrados = new List<T>();
 
+            foreach (T registro in registros)
+                if (condicao(registro) && condicao2(registro))
+                    registrosFiltrados.Add(registro);
+
+            return registrosFiltrados;
+        }
         public bool RegistroExistente()
         {
             int quantidade = registros.Count;

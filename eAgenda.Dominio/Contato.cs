@@ -14,6 +14,7 @@ namespace eAgenda.Dominio
         public string Telefone { get { return telefone; } set { telefone = value; } }
         public string Empresa { get; set; }
         public string Cargo { get; set; }
+        public bool EstaEmCompromisso  { get; set; }
 
         public Contato()
         {

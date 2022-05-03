@@ -37,7 +37,7 @@ namespace eAgenda2._0
                 maskedTextBoxData.Text = _compromisso.DataCompromisso.ToString();
                 maskedTextBoxHoraInicio.Text = _compromisso.HoraInicio.ToString();
                 maskedTextBoxHoraFim.Text = _compromisso.HoraFim.ToString();
-                if (_compromisso.Contato.RetornarNome() == null)
+                if (_compromisso.Contato.RetornarNome() != null)
                     comboBoxContato.Text = _compromisso.Contato.RetornarNome();
             }
         }
@@ -61,7 +61,9 @@ namespace eAgenda2._0
             {
                 comboBoxContato.SelectedItem = _compromisso.Contato;
             }
-            _compromisso.Contato = (Contato)comboBoxContato.SelectedItem;
+              _compromisso.Contato = (Contato)comboBoxContato.SelectedItem;
+               
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

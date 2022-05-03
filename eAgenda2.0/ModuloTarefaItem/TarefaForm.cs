@@ -18,6 +18,7 @@ namespace eAgenda2._0
         {
             InitializeComponent();
             _repositorioTarefa = repositorio;
+            CarregarTarefasNaTela();
         }
 
         private void btnInserirTarefa_Click(object sender, EventArgs e)
@@ -25,11 +26,17 @@ namespace eAgenda2._0
             CadastroTarefaForm telaTarefa = new(new Tarefa());
             DialogResult resultado = telaTarefa.ShowDialog();
 
+            
             if (resultado == DialogResult.OK)
             {
+                Tarefa tituloTarefa = telaTarefa.Tarefa;
+                bool tituloNovo = VerificarTituloExistentente(tituloTarefa);
+                    if (!tituloNovo)
+                    return;
+
                 string status = _repositorioTarefa.Inserir(telaTarefa.Tarefa);
 
-                if (status == "REGISTRO_VALIDO")
+                if (status.Trim() == "REGISTRO_VALIDO")
                     MessageBox.Show("Tarefa inserido com sucesso!", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 else
                     MessageBox.Show($"{status}\nTente novamente", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -46,16 +53,15 @@ namespace eAgenda2._0
 
             Tarefa novaTarefa = new();
 
+            bool temAlgo = VerificarRegistros(tarefaSelecionada, "Excluir");
+            if (!temAlgo)
+                return;
+
             novaTarefa.id = tarefaSelecionada.id;
             novaTarefa.Titulo = tarefaSelecionada.Titulo;
             novaTarefa.DataCriacao = tarefaSelecionada.DataCriacao;
-
             novaTarefa.concluido = tarefaSelecionada.concluido;
-
-            bool temRegistro = VerificarRegistros(tarefaSelecionada, "Editar");
-            if (!temRegistro)
-                return;
-
+  
             CadastroTarefaForm telaTarefa = new(novaTarefa);
 
             DialogResult resultado = telaTarefa.ShowDialog();
@@ -63,7 +69,7 @@ namespace eAgenda2._0
             if(resultado == DialogResult.OK)
             {
                 string status = _repositorioTarefa.Editar(novaTarefa, tarefaSelecionada);
-                if(status == "REGISTRO_VALIDO")
+                if(status.Trim() == "REGISTRO_VALIDO")
                 {
                     MessageBox.Show("Tarefa editada com sucesso", "Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     CarregarTarefasNaTela();
@@ -96,10 +102,27 @@ namespace eAgenda2._0
 
         private void btnExcluirTarefas_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listBoxTarefasPendentes.SelectedItem;
+            Tarefa tarefaSelecionada = null;
+
+            if (listBoxTarefasPendentes.SelectedIndex > -1)
+            {
+                 tarefaSelecionada = (Tarefa)listBoxTarefasPendentes.SelectedItem;
+            }
+            else
+            { 
+                tarefaSelecionada = (Tarefa)listBoxTarefasConcluidas.SelectedItem;
+            }
+
             bool temAlgo = VerificarRegistros(tarefaSelecionada, "Excluir");
             if (!temAlgo)
                 return;
+
+            Tarefa tarefasPendentes = (Tarefa)listBoxTarefasPendentes.SelectedItem;
+            if (tarefasPendentes != null)
+            {
+                MessageBox.Show("Você só pode excluir tarefas já concluídas!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DialogResult resultado = MessageBox.Show("Excluir tarefa?",
                 "Excluir", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -144,13 +167,16 @@ namespace eAgenda2._0
 
         private void CarregarTarefasNaTela()
         {
+
             CarregarPendentes();
             CarregarConcluidas();
         }
 
         private void CarregarPendentes()
         {
-            List<Tarefa> tarefasPendentes = _repositorioTarefa.FiltrarCompromissos(x => x.concluido == false);
+
+            List<Tarefa> tarefasPendentes = _repositorioTarefa.FiltrarCompromissos(x => x.concluido == false).OrderBy(x => x.PrioridadeTarefa).ToList();
+
             listBoxTarefasPendentes.Items.Clear();
             foreach (var item in tarefasPendentes)
                 listBoxTarefasPendentes.Items.Add(item);
@@ -158,7 +184,7 @@ namespace eAgenda2._0
 
         private void CarregarConcluidas()
         {
-            List<Tarefa> tarefasConcluidas = _repositorioTarefa.FiltrarCompromissos(x => x.concluido == true);
+            List<Tarefa> tarefasConcluidas = _repositorioTarefa.FiltrarCompromissos(x => x.concluido == true).OrderBy(x => x.PrioridadeTarefa).ToList();
             listBoxTarefasConcluidas.Items.Clear();
             foreach (var item in tarefasConcluidas)
                 listBoxTarefasConcluidas.Items.Add(item);
@@ -167,6 +193,36 @@ namespace eAgenda2._0
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private bool VerificarTituloExistentente(Tarefa temp)
+        {
+            List<Tarefa> todasTarefas = _repositorioTarefa.SelecionarTodos();
+
+            foreach (Tarefa tarefaJaRegistrada in todasTarefas)
+            {
+                if (tarefaJaRegistrada.Titulo == temp.Titulo)
+                {
+                    MessageBox.Show("O titulo da tarefa já existe", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void listBoxTarefasPendentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxTarefasPendentes.SelectedIndex > -1)
+            {
+                listBoxTarefasConcluidas.SelectedIndex = -1;
+            }
+        }
+
+        private void listBoxTarefasConcluidas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxTarefasConcluidas.SelectedIndex > -1)
+            {
+                listBoxTarefasPendentes.SelectedIndex = -1;
+            }
         }
     }
 }
