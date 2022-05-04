@@ -12,7 +12,7 @@ namespace eAgenda.Dominio
 
         string titulo;
 
-        private List<Item> itens = new List<Item>();
+        private readonly List<Item> itens = new();
 
         public bool concluido;
         public Tarefa()

@@ -51,7 +51,7 @@ namespace eAgenda2._0
         private void btnEditarCompromisso_Click(object sender, EventArgs e)
         {
 
-            Compromisso compromissoSelecionado = null;
+            Compromisso? compromissoSelecionado = null;
 
             if (listBoxCompromissosPassados.SelectedIndex > -1)
             {
@@ -99,7 +99,7 @@ namespace eAgenda2._0
 
         private void btnExcluirCompromisso_Click(object sender, EventArgs e)
         {
-            Compromisso compromissoSelecionado = null;
+            Compromisso? compromissoSelecionado = null;
 
             if (listBoxCompromissosPassados.SelectedIndex > -1)
             {

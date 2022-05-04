@@ -47,7 +47,7 @@ namespace eAgenda.Dominio
         
         public List<T> FiltrarCompromissos(Predicate<T> condicao)
         {
-            List<T> registrosFiltrados = new List<T>();
+            List<T> registrosFiltrados = new ();
 
             foreach(T registro in registros)
                 if(condicao(registro))
@@ -57,7 +57,7 @@ namespace eAgenda.Dominio
         }
         public List<T> FiltrarCompromissos(Predicate<T> condicao, Predicate<T> condicao2)
         {
-            List<T> registrosFiltrados = new List<T>();
+            List<T> registrosFiltrados = new ();
 
             foreach (T registro in registros)
                 if (condicao(registro) && condicao2(registro))

@@ -49,7 +49,16 @@ namespace eAgenda2._0
 
         private void btnEditarTarefas_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listBoxTarefasPendentes.SelectedItem;
+            Tarefa? tarefaSelecionada = null;
+
+            if (listBoxTarefasPendentes.SelectedIndex > -1)
+            {
+                tarefaSelecionada = (Tarefa)listBoxTarefasPendentes.SelectedItem;
+            }
+            else
+            {
+                tarefaSelecionada = (Tarefa)listBoxTarefasConcluidas.SelectedItem;
+            }
 
             Tarefa novaTarefa = new();
 
@@ -102,7 +111,7 @@ namespace eAgenda2._0
 
         private void btnExcluirTarefas_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = null;
+            Tarefa? tarefaSelecionada = null;
 
             if (listBoxTarefasPendentes.SelectedIndex > -1)
             {
