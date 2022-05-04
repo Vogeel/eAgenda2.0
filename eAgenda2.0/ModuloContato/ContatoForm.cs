@@ -118,27 +118,34 @@ namespace eAgenda2._0
 
         private void MostrarContatosNaTelaPorCargo()
         {
-            List<Contato> contatos = _repositorioContato.SelecionarTodos();
+            var contatosPorCargo = _repositorioContato.SelecionarTodos()
+                                                   .OrderBy(x => x.Cargo)
+                                                   .ToList();
+
             listBoxContatos.Items.Clear();
 
-            foreach (Contato c in contatos)           
-               listBoxContatos.Items.Add(c);
-            
+            foreach (var c in contatosPorCargo)
+            {
+                listBoxContatos.Items.Add(c);
+            }
+
         }
 
-        private void bntSairContato_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void MostrarContatosNaTela()
         {
             List<Contato> contatos = _repositorioContato.SelecionarTodos();
             listBoxContatos.Items.Clear();
+
             foreach (Contato c in contatos)
             {
                 listBoxContatos.Items.Add(c);
             }
+        }
+        private void bntSairContato_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private bool VerificarSeTemRegistro(Contato contatoSelecionado, string tipo)
